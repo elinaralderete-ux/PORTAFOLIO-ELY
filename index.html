@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elina | Sistema de Reservas y Atención 24/7 por WhatsApp para Salones</title>
-  <meta name="description" content="Automatizá la atención y turnos de tu salón de belleza o peluquería en WhatsApp 24/7. Sin perder clientas ni estar pendiente del celular.">
+  <meta name="description" content="Sistema de reservas y atención 24/7 por WhatsApp para salones de belleza, peluquerías y centros de estética. Atendé clientas y llená tu agenda sin soltar la tijera ni el pincel.">
   
   <!-- Tipografía moderna Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,12 +72,10 @@
       background-attachment: fixed;
     }
 
-    /* Tipografía decorativa para títulos secundarios */
     .font-serif {
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* Contenedor estándar */
     .container {
       width: 100%;
       max-width: var(--max-width);
@@ -85,13 +83,11 @@
       padding: 0 1.5rem;
     }
 
-    /* Estilo de secciones */
     section {
       padding: 5rem 0;
       position: relative;
     }
 
-    /* Títulos de sección */
     .section-title {
       font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       font-weight: 800;
@@ -111,7 +107,6 @@
       margin: 0 auto 3rem auto;
     }
 
-    /* Badges / Etiquetas */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -128,7 +123,6 @@
       border: 1px solid var(--border-accent);
     }
 
-    /* Cajas para la "Objeción que mata" */
     .objection-card {
       background: rgba(239, 68, 68, 0.05);
       border: 1px solid rgba(239, 68, 68, 0.2);
@@ -162,7 +156,6 @@
       font-style: italic;
     }
 
-    /* Botones primarios */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -259,7 +252,6 @@
       font-size: 0.9rem;
     }
 
-    /* Hamburguesa Móvil */
     .menu-toggle {
       display: none;
       background: none;
@@ -278,14 +270,14 @@
     }
 
     .hero-content {
-      max-width: 860px;
+      max-width: 880px;
       margin: 0 auto;
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-size: clamp(2rem, 4.8vw, 3.4rem);
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.2;
       margin-bottom: 1.75rem;
       letter-spacing: -0.02em;
     }
@@ -296,48 +288,58 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-phrases {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
-      text-align: left;
-    }
-
-    .phrase-card {
+    .bio-card {
       background: var(--bg-card);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 1.5rem 1.75rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      text-align: left;
       backdrop-filter: blur(10px);
+    }
+
+    .bio-card p {
+      font-size: 1.1rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Tarjetas de Entregables (Qué les entrego) */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0 1.5rem 0;
+      text-align: left;
+    }
+
+    .deliverable-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
       transition: var(--transition);
     }
 
-    .phrase-card:hover {
+    .deliverable-card:hover {
       border-color: var(--border-accent);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
-    .phrase-icon {
-      background: rgba(232, 165, 184, 0.15);
+    .deliverable-card h4 {
       color: var(--accent-rose);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      flex-shrink: 0;
+      gap: 0.5rem;
     }
 
-    .phrase-text {
-      font-size: 1.1rem;
-      color: var(--text-main);
-      font-weight: 500;
+    .deliverable-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     /* ==========================================================================
@@ -373,7 +375,7 @@
       font-weight: 800;
       padding: 0.3rem 1rem;
       border-radius: var(--radius-full);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
     }
 
     .target-tag.yes {
@@ -386,10 +388,34 @@
       color: #ef4444;
     }
 
-    .target-card p {
-      font-size: 1.05rem;
+    .target-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .target-list li {
+      font-size: 1.02rem;
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .target-list.yes li::before {
+      content: "✓";
+      color: var(--accent-whatsapp);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .target-list.no li::before {
+      content: "✕";
+      color: #ef4444;
+      font-weight: 800;
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
@@ -436,7 +462,6 @@
     .comp-card.before .comp-title { color: #f59e0b; }
     .comp-card.after .comp-title { color: var(--accent-whatsapp); }
 
-    /* Mockup de Celular / WhatsApp Chat */
     .phone-mockup {
       background: #111b21;
       border: 10px solid #1f2937;
@@ -521,13 +546,13 @@
     }
 
     /* ==========================================================================
-       SECCIÓN 4: CÓMO TRABAJO, PASO A PASO
+       SECCIÓN 4: CÓMO TRABAJO, PASO A PASO & REQUISITOS DEL CLIENTE
        ========================================================================== */
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .step-card {
@@ -563,6 +588,49 @@
     .step-card p {
       color: var(--text-muted);
       font-size: 1rem;
+    }
+
+    .client-req-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.25rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .client-req-box h3 {
+      color: var(--accent-gold);
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .client-req-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .client-req-list li {
+      color: var(--text-main);
+      font-size: 0.98rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+
+    .client-req-list li::before {
+      content: "📌";
+      font-size: 0.95rem;
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
@@ -755,7 +823,7 @@
 
     @media (max-width: 768px) {
       .nav-links {
-        display: none; /* Se activa con JS si se desea menú responsive completo */
+        display: none;
         position: absolute;
         top: 100%;
         left: 0;
@@ -824,25 +892,49 @@
     <section id="quien-soy" class="hero">
       <div class="container">
         <div class="hero-content">
-          <div class="badge">✨ Tu negocio en automático</div>
+          <div class="badge">✨ Solución Integral de IA para Salones</div>
           
+          <!-- Oferta concreta en el Hero -->
           <h1 class="hero-title">
-            Tu salón abierto 24/7 en WhatsApp, <span>sin que tengas que soltar la tijera ni el pincel.</span>
+            Sistema de reservas y atención 24/7 por WhatsApp para salones de belleza: <span>atendé a tus clientas y llená tu agenda sin soltar la tijera ni el pincel.</span>
           </h1>
 
-          <div class="hero-phrases">
-            <div class="phrase-card">
-              <div class="phrase-icon">1</div>
-              <div class="phrase-text">
-                "Soy Elina y creo sistemas de reserva y atención por WhatsApp para que no pierdas más clientas ni vivas con el celular pegado a la mano."
-              </div>
+          <!-- Presentación Quién Soy -->
+          <div class="bio-card">
+            <p>
+              Soy <strong>Elina</strong>, especialista en soluciones de Inteligencia Artificial y automatización enfocada en optimizar la atención y gestión de negocios de estética y belleza.
+            </p>
+          </div>
+
+          <!-- Qué les entrego (3 Pilares del Sistema Integral) -->
+          <div style="text-align: left; margin-top: 2rem;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">
+              📦 Qué incluye tu Sistema Integral de Atención y Reserva por WhatsApp:
+            </h3>
+          </div>
+
+          <div class="deliverables-grid">
+            <div class="deliverable-card">
+              <h4>🤖 Asistente virtual 24/7</h4>
+              <p>Responde al instante dudas sobre servicios, ubicación, requisitos y precios en cualquier momento del día.</p>
             </div>
 
-            <div class="phrase-card">
-              <div class="phrase-icon">2</div>
-              <div class="phrase-text">
-                "Tus clientas consultan precios, ven tu disponibilidad y reservan solas a cualquier hora, mientras vos atendés tranquila."
-              </div>
+            <div class="deliverable-card">
+              <h4>📅 Agenda inteligente integrada</h4>
+              <p>Muestra disponibilidad y permite a las clientas reservar su turno de forma autónoma según tus horarios.</p>
+            </div>
+
+            <div class="deliverable-card">
+              <h4>🔔 Recordatorios automáticos</h4>
+              <p>Envía avisos de confirmación por WhatsApp antes de cada cita para asegurar la asistencia de la clienta.</p>
+            </div>
+          </div>
+
+          <!-- Tarjeta Qué problema les saco -->
+          <div class="phrase-card" style="margin-top: 1.5rem;">
+            <div class="phrase-icon">💡</div>
+            <div class="phrase-text">
+              <strong>Qué problema te saco:</strong> Te saco el estrés de estar contestando mensajes mientras atendés, la pérdida de clientas por demoras en responder consultas de precios o disponibilidad fuera de horario, y los huecos en la agenda por turnos colgados o cancelados a último momento.
             </div>
           </div>
 
@@ -865,23 +957,27 @@
     <section id="para-quien">
       <div class="container">
         <h2 class="section-title">¿Es este sistema para tu salón?</h2>
-        <p class="section-subtitle">Descubrí si mi solución se adapta exactamente a la realidad de tu día a día.</p>
+        <p class="section-subtitle">A quién ayudo y a quién no. Evaluá si mi propuesta coincide exactamente con lo que necesita tu negocio.</p>
 
         <div class="target-grid">
-          <!-- Tarjeta SÍ -->
+          <!-- Tarjeta SÍ (3 viñetas) -->
           <div class="target-card yes">
-            <span class="target-tag yes">✓ SÍ ES PARA VOS</span>
-            <p>
-              Para salones de belleza, peluquerías, estudios de uñas y centros de estética cansados de perder turnos por demoras en responder o ausencias a último momento.
-            </p>
+            <span class="target-tag yes">✓ PARA QUIÉN SÍ</span>
+            <ul class="target-list yes">
+              <li>Salones de belleza, peluquerías, estudios de uñas y centros de estética tapados de trabajo.</li>
+              <li>Dueñas y dueños que pierden clientas por no poder responder el WhatsApp a tiempo o fuera de horario.</li>
+              <li>Negocios que sufren por ausencias a los turnos o cancelaciones a último momento.</li>
+            </ul>
           </div>
 
-          <!-- Tarjeta NO -->
+          <!-- Tarjeta NO (3 viñetas) -->
           <div class="target-card no">
-            <span class="target-tag no">✕ NO ES PARA VOS</span>
-            <p>
-              Para quienes buscan soluciones genéricas, prefieren seguir anotando en libreta de papel o no quieren digitalizar la atención de su negocio.
-            </p>
+            <span class="target-tag no">✕ PARA QUIÉN NO</span>
+            <ul class="target-list no">
+              <li>Quienes prefieren seguir anotando turnos a mano en una libreta de papel.</li>
+              <li>Negocios que buscan soluciones genéricas sin adaptación a su salón ni a sus profesionales.</li>
+              <li>Quienes no quieren digitalizar ni automatizar la atención de su negocio.</li>
+            </ul>
           </div>
         </div>
 
@@ -944,7 +1040,7 @@
               </div>
 
               <div class="chat-bubble bot">
-                ¡Hola! 👋 Claro que sí. El perfilado está $XXXX. Disponemos de turno hoy a las 16:30hs o 18:00hs con Elina. ¿Cuál preferís?
+                ¡Hola! 👋 Claro que sí. El perfilado está disponible. Disponemos de turno hoy a las 16:30hs o 18:00hs con Elina. ¿Cuál preferís?
                 <div class="chat-time">14:02</div>
               </div>
 
@@ -954,7 +1050,7 @@
               </div>
 
               <div class="chat-bubble bot">
-                ¡Excelente! 🎉 Tu turno quedó reservado para hoy 16:30hs. Te enviamos el recordatorio 2hs antes. ¡Te esperamos!
+                ¡Excelente! 🎉 Tu turno quedó reservado para hoy 16:30hs. Te enviamos el recordatorio automático antes de la cita. ¡Te esperamos!
                 <div class="chat-time">14:03</div>
               </div>
             </div>
@@ -965,25 +1061,36 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 4: CÓMO TRABAJO, PASO A PASO
+         SECCIÓN 4: CÓMO TRABAJO, PASO A PASO & REQUISITOS DEL CLIENTE
          ========================================================================== -->
     <section id="paso-a-paso">
       <div class="container">
         <h2 class="section-title">Listo y funcionando en tu salón en solo 7 a 10 días hábiles.</h2>
-        <p class="section-subtitle">Sin complicaciones técnicas para vos. Un proceso ágil y transparente.</p>
+        <p class="section-subtitle">En 7 a 10 días hábiles tenés el sistema configurado, probado y listo para funcionar en tu salón.</p>
 
         <div class="steps-grid">
           <div class="step-card">
             <div class="step-number">01</div>
-            <h3>Paso 1: Diagnóstico e Información</h3>
+            <h3>Paso 1: Relevamiento Inicial (30 min)</h3>
             <p>"En una charla inicial de 30 minutos me pasás tus servicios, horarios y profesionales; del resto de la configuración y pruebas me encargo yo."</p>
           </div>
 
           <div class="step-card">
             <div class="step-number">02</div>
-            <h3>Paso 2: Prueba y Activación</h3>
+            <h3>Paso 2: Prueba y Capacitación (30 min)</h3>
             <p>"Hacemos una prueba rápida de 30 minutos juntos, te capacito en dos pasos y el sistema queda 100% activo en tu WhatsApp actual."</p>
           </div>
+        </div>
+
+        <!-- Qué tiene que poner el cliente -->
+        <div class="client-req-box">
+          <h3>📋 Qué tiene que poner el cliente:</h3>
+          <ul class="client-req-list">
+            <li>Tu lista actualizada de servicios, precios y preguntas frecuentes.</li>
+            <li>Los horarios de atención y la disponibilidad por profesional o sillón.</li>
+            <li>Acceso al número de WhatsApp del salón para realizar la vinculación.</li>
+            <li>30 minutos para la charla inicial de relevamiento y 30 minutos al final para la prueba y capacitación rápida.</li>
+          </ul>
         </div>
 
         <!-- Objeción que mata #4 -->
@@ -1197,23 +1304,20 @@
         questionBtn.addEventListener('click', () => {
           const isActive = item.classList.contains('active');
           
-          // Cerrar los demás ítems (opcional para mantener ordenado)
           faqItems.forEach(otherItem => {
             otherItem.classList.remove('active');
           });
 
-          // Si no estaba activo, abrirlo
           if (!isActive) {
             item.classList.add('active');
           }
         });
       });
 
-      // 3. Manejador para el botón CTA final (preparado para link o acción futura)
+      // 3. Manejador para el botón CTA final
       const btnCtaFinal = document.getElementById('btnCtaFinal');
       if (btnCtaFinal) {
         btnCtaFinal.addEventListener('click', function(e) {
-          // Si no hay link asignado aún, muestra una alerta amigable
           if (this.getAttribute('href') === '#') {
             e.preventDefault();
             alert('¡Gracias por tu interés! Aquí podrás enlazar tu Calendly o tu WhatsApp personal para la llamada de 20 minutos.');
