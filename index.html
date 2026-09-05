@@ -131,7 +131,7 @@
       padding: 1.25rem 1.5rem;
       margin-top: 2rem;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 1rem;
     }
 
@@ -141,18 +141,9 @@
       flex-shrink: 0;
     }
 
-    .objection-card .title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #f87171;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
     .objection-card p {
       color: #fca5a5;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-style: italic;
     }
 
@@ -304,7 +295,6 @@
       line-height: 1.6;
     }
 
-    /* Tarjetas de Entregables (Qué les entrego) */
     .deliverables-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -749,17 +739,6 @@
       margin-bottom: 0.75rem;
     }
 
-    .faq-objection-tag {
-      display: inline-block;
-      font-size: 0.85rem;
-      color: #f87171;
-      background: rgba(239, 68, 68, 0.1);
-      padding: 0.25rem 0.6rem;
-      border-radius: var(--radius-sm);
-      margin-bottom: 0.5rem;
-      font-style: italic;
-    }
-
     /* ==========================================================================
        SECCIÓN 7: LLAMADO A LA ACCIÓN FINAL (CTA)
        ========================================================================== */
@@ -938,11 +917,10 @@
             </div>
           </div>
 
-          <!-- Objeción que mata #1 -->
+          <!-- Objeción principal (sin título de etiqueta) -->
           <div class="objection-card">
             <div class="icon">💡</div>
             <div>
-              <div class="title">¿Te pasa esto? (La objeción principal)</div>
               <p>"No tengo tiempo para estar contestando mensajes y si demoro pierdo la clienta, pero tampoco quiero estar 24/7 pendiente del celular."</p>
             </div>
           </div>
@@ -981,11 +959,10 @@
           </div>
         </div>
 
-        <!-- Objeción que mata #2 -->
+        <!-- Objeción #2 (sin título de etiqueta) -->
         <div class="objection-card">
           <div class="icon">💡</div>
           <div>
-            <div class="title">Miedo habitual</div>
             <p>"Capaz esto no se adapta al ritmo real de mi negocio o es una solución genérica para empresas gigantes."</p>
           </div>
         </div>
@@ -1013,11 +990,10 @@
               <p>WhatsApp respondiendo al instante, confirmaciones automáticas que aseguran la asistencia y tu agenda ordenada sin mover un dedo.</p>
             </div>
 
-            <!-- Objeción que mata #3 -->
+            <!-- Objeción #3 (sin título de etiqueta) -->
             <div class="objection-card" style="margin-top:0;">
               <div class="icon">💡</div>
               <div>
-                <div class="title">La duda más común</div>
                 <p>"No me imagino cómo me va a cambiar la vida en el día a día ni si realmente funciona en la práctica."</p>
               </div>
             </div>
@@ -1093,11 +1069,10 @@
           </ul>
         </div>
 
-        <!-- Objeción que mata #4 -->
+        <!-- Objeción #4 (sin título de etiqueta) -->
         <div class="objection-card">
           <div class="icon">💡</div>
           <div>
-            <div class="title">¿Te preocupa la puesta en marcha?</div>
             <p>"Configurar esto me va a llevar semanas, me va a complicar la vida y me va a sacar tiempo de atención."</p>
           </div>
         </div>
@@ -1129,11 +1104,10 @@
             </div>
           </div>
 
-          <!-- Objeción que mata #5 -->
+          <!-- Objeción #5 (sin título de etiqueta) -->
           <div class="objection-card" style="text-align: left;">
             <div class="icon">💡</div>
             <div>
-              <div class="title">Miedo al costo infundado</div>
               <p>"Me van a querer vender un paquete enlatado carísimo que no se ajusta a lo que realmente uso."</p>
             </div>
           </div>
@@ -1160,7 +1134,6 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <div class="faq-objection-tag">Objeción: Miedo a perder contactos o tener que cambiar el número de siempre.</div>
                 <p><strong>Respuesta:</strong> No, trabajamos sobre tu número actual de siempre. No perdés contactos ni chats.</p>
               </div>
             </div>
@@ -1174,7 +1147,6 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <div class="faq-objection-tag">Objeción: Miedo a la deshumanización o a que la automatización responda mal.</div>
                 <p><strong>Respuesta:</strong> El sistema detecta la consulta compleja, no responde a ciegas y te deriva el chat a vos o a tu recepción inmediatamente.</p>
               </div>
             </div>
@@ -1188,7 +1160,6 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <div class="faq-objection-tag">Objeción: Miedo a la dificultad tecnológica.</div>
                 <p><strong>Respuesta:</strong> Para las clientas es como chatear con una persona por WhatsApp. Para vos es facilísimo: ves la agenda limpia y ordenada desde tu celular o computadora.</p>
               </div>
             </div>
@@ -1202,7 +1173,6 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <div class="faq-objection-tag">Objeción: Miedo al descontrol en la agenda por cambios o ausencias.</div>
                 <p><strong>Respuesta:</strong> Lo hace directo desde el chat de WhatsApp con anticipación; el sistema libera ese turno automáticamente para que otra persona lo ocupe.</p>
               </div>
             </div>
@@ -1216,7 +1186,6 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <div class="faq-objection-tag">Objeción: Miedo a que no contemple complejidades de equipos o sillones múltiples.</div>
                 <p><strong>Respuesta:</strong> Sí, se configura la disponibilidad de cada profesional por separado para que la clienta elija con quién y cuándo atenderse.</p>
               </div>
             </div>
@@ -1230,7 +1199,6 @@
             </button>
             <div class="faq-answer">
               <div class="faq-answer-inner">
-                <div class="faq-objection-tag">Objeción: Miedo a tener que gastar en equipos o lidiar con software complicado.</div>
                 <p><strong>Respuesta:</strong> Para nada. Todo corre directo en WhatsApp y la agenda se sincroniza con Google Calendar o una pantalla muy sencilla que abrís desde cualquier navegador.</p>
               </div>
             </div>
@@ -1257,11 +1225,10 @@
             Agendar reunión de 20 minutos
           </a>
 
-          <!-- Objeción que mata #6 / Cierre -->
+          <!-- Cierre final (sin título de etiqueta) -->
           <div class="objection-card" style="margin-top: 3rem; text-align: left;">
             <div class="icon">💡</div>
             <div>
-              <div class="title">Sin compromisos a ciegas</div>
               <p>"Miedo a contratar a ciegas, perder tiempo o tener que tomar una decisión sin ver el sistema funcionando." -> En la llamada ves exactamente cómo funciona con una demo en vivo en tiempo real.</p>
             </div>
           </div>
