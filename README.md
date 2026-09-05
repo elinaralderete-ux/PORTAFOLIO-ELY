@@ -1,0 +1,1298 @@
+[index.html](https://github.com/user-attachments/files/31865757/index.html)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elina | Sistema de Reservas y Atención 24/7 por WhatsApp para Salones</title>
+  <meta name="description" content="Sistema de reservas y atención 24/7 por WhatsApp para salones de belleza, peluquerías y centros de estética. Atendé clientas y llená tu agenda sin soltar la tijera ni el pincel.">
+  
+  <!-- Tipografía moderna Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       ESTILOS GENERALES Y VARIABLES (DESIGN SYSTEM)
+       ========================================================================== */
+    :root {
+      /* Paleta de colores Luxury Beauty-Tech */
+      --bg-dark: #0b0d14;
+      --bg-card: rgba(22, 27, 46, 0.7);
+      --bg-card-hover: rgba(30, 37, 62, 0.85);
+      
+      --accent-rose: #e8a5b8;
+      --accent-gold: #e0a96d;
+      --accent-purple: #8b5cf6;
+      --accent-whatsapp: #25d366;
+      --accent-whatsapp-hover: #20bd5a;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --border-light: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(232, 165, 184, 0.25);
+      
+      --gradient-rose-gold: linear-gradient(135deg, #e8a5b8 0%, #e0a96d 100%);
+      --gradient-dark-glow: radial-gradient(circle at 50% 0%, rgba(232, 165, 184, 0.15), transparent 70%);
+      
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 10px 30px -10px rgba(232, 165, 184, 0.3);
+      --shadow-wa: 0 10px 25px -5px rgba(37, 211, 102, 0.3);
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --max-width: 1120px;
+    }
+
+    /* Reset y configuraciones base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: var(--gradient-dark-glow);
+      background-attachment: fixed;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 680px;
+      margin: 0 auto 3rem auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      background: rgba(232, 165, 184, 0.1);
+      color: var(--accent-rose);
+      border: 1px solid var(--border-accent);
+    }
+
+    .objection-card {
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-left: 4px solid #ef4444;
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .objection-card .icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .objection-card p {
+      color: #fca5a5;
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.1rem 2.2rem;
+      border-radius: var(--radius-full);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-whatsapp {
+      background: var(--accent-whatsapp);
+      color: #ffffff;
+      box-shadow: var(--shadow-wa);
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--accent-whatsapp-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.5);
+    }
+
+    .btn-primary {
+      background: var(--gradient-rose-gold);
+      color: #0b0d14;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px -5px rgba(232, 165, 184, 0.4);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVEGACIÓN
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 13, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      background: var(--gradient-rose-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-rose);
+    }
+
+    .nav-cta {
+      padding: 0.6rem 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 1: HERO & QUIÉN SOY Y QUÉ OFREZCO
+       ========================================================================== */
+    .hero {
+      padding: 6rem 0 4rem 0;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4.8vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      background: var(--gradient-rose-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      text-align: left;
+      backdrop-filter: blur(10px);
+    }
+
+    .bio-card p {
+      font-size: 1.1rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0 1.5rem 0;
+      text-align: left;
+    }
+
+    .deliverable-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .deliverable-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+    }
+
+    .deliverable-card h4 {
+      color: var(--accent-rose);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .deliverable-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 2: PARA QUIÉN SÍ / PARA QUIÉN NO
+       ========================================================================== */
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .target-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .target-card.yes {
+      border-top: 4px solid var(--accent-whatsapp);
+    }
+
+    .target-card.no {
+      border-top: 4px solid #ef4444;
+    }
+
+    .target-tag {
+      display: inline-block;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 0.3rem 1rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.5rem;
+    }
+
+    .target-tag.yes {
+      background: rgba(37, 211, 102, 0.15);
+      color: var(--accent-whatsapp);
+    }
+
+    .target-tag.no {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+
+    .target-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .target-list li {
+      font-size: 1.02rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .target-list.yes li::before {
+      content: "✓";
+      color: var(--accent-whatsapp);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .target-list.no li::before {
+      content: "✕";
+      color: #ef4444;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 3: DEMO (ANTES Y DESPUÉS + MOCKUP CHAT)
+       ========================================================================== */
+    .demo-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .comparison-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .comp-card {
+      padding: 1.75rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      background: var(--bg-card);
+    }
+
+    .comp-card.before {
+      border-left: 4px solid #f59e0b;
+    }
+
+    .comp-card.after {
+      border-left: 4px solid var(--accent-whatsapp);
+      background: rgba(37, 211, 102, 0.03);
+    }
+
+    .comp-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .comp-card.before .comp-title { color: #f59e0b; }
+    .comp-card.after .comp-title { color: var(--accent-whatsapp); }
+
+    .phone-mockup {
+      background: #111b21;
+      border: 10px solid #1f2937;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      max-width: 380px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .whatsapp-header {
+      background: #202c33;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .wa-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-rose-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #0b0d14;
+    }
+
+    .wa-info .wa-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #e9edef;
+    }
+
+    .wa-info .wa-status {
+      font-size: 0.75rem;
+      color: var(--accent-whatsapp);
+    }
+
+    .whatsapp-body {
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+      background-size: 12px 12px;
+      min-height: 340px;
+    }
+
+    .chat-bubble {
+      max-width: 82%;
+      padding: 0.75rem 0.9rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .chat-bubble.client {
+      align-self: flex-start;
+      background: #202c33;
+      color: #e9edef;
+      border-top-left-radius: 2px;
+    }
+
+    .chat-bubble.bot {
+      align-self: flex-end;
+      background: #005c4b;
+      color: #e9edef;
+      border-top-right-radius: 2px;
+    }
+
+    .chat-time {
+      font-size: 0.65rem;
+      color: rgba(241, 245, 249, 0.6);
+      text-align: right;
+      margin-top: 0.25rem;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 4: CÓMO TRABAJO, PASO A PASO & REQUISITOS DEL CLIENTE
+       ========================================================================== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.75rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .step-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+    }
+
+    .step-number {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--gradient-rose-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .step-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .client-req-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.25rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .client-req-box h3 {
+      color: var(--accent-gold);
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .client-req-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .client-req-list li {
+      color: var(--text-main);
+      font-size: 0.98rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+
+    .client-req-list li::before {
+      content: "📌";
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 5: CÓMO ARMO UN PRESUPUESTO
+       ========================================================================== */
+    .budget-box {
+      background: linear-gradient(135deg, rgba(22, 27, 46, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .budget-phrases {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    .budget-phrase-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+
+    .budget-phrase-item .check {
+      color: var(--accent-rose);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 6: PREGUNTAS FRECUENTES (FAQ ACCORDION)
+       ========================================================================== */
+    .faq-wrapper {
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item.active {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.4rem 1.75rem;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 1rem;
+    }
+
+    .faq-question:hover {
+      color: var(--accent-rose);
+    }
+
+    .faq-icon {
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+      color: var(--accent-rose);
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 1.75rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 1.75rem 1.5rem 1.75rem;
+    }
+
+    .faq-answer-inner {
+      border-top: 1px solid var(--border-light);
+      padding-top: 1rem;
+    }
+
+    .faq-answer p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 7: LLAMADO A LA ACCIÓN FINAL (CTA)
+       ========================================================================== */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 0;
+    }
+
+    .cta-card {
+      background: linear-gradient(180deg, rgba(232, 165, 184, 0.08) 0%, rgba(11, 13, 20, 0.95) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 4rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    }
+
+    .cta-phrases {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin: 1.5rem auto 2.5rem auto;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .cta-phrases strong {
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent-rose);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN (MEDIA QUERIES)
+       ========================================================================== */
+    @media (max-width: 900px) {
+      .demo-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-dark);
+        flex-direction: column;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .budget-box, .cta-card {
+        padding: 2rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER / NAVEGACIÓN
+       ========================================================================== -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <span>Elina</span> | Salón 24/7
+      </a>
+
+      <!-- Botón menú celular -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">☰</button>
+
+      <!-- Enlaces principales -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#quien-soy">Quién soy</a></li>
+        <li><a href="#para-quien">¿Para quién es?</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#paso-a-paso">Paso a paso</a></li>
+        <li><a href="#presupuesto">Presupuesto</a></li>
+        <li><a href="#faq">Preguntas Frecuentes</a></li>
+      </ul>
+
+      <!-- Botón CTA en header -->
+      <a href="#cta-final" class="btn btn-primary nav-cta">Agendar reunión</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         SECCIÓN 1: QUIÉN SOY Y QUÉ OFREZCO (HERO)
+         ========================================================================== -->
+    <section id="quien-soy" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="badge">✨ Solución Integral de IA para Salones</div>
+          
+          <!-- Oferta concreta en el Hero -->
+          <h1 class="hero-title">
+            Sistema de reservas y atención 24/7 por WhatsApp para salones de belleza: <span>atendé a tus clientas y llená tu agenda sin soltar la tijera ni el pincel.</span>
+          </h1>
+
+          <!-- Presentación Quién Soy -->
+          <div class="bio-card">
+            <p>
+              Soy <strong>Elina</strong>, especialista en soluciones de Inteligencia Artificial y automatización enfocada en optimizar la atención y gestión de negocios de estética y belleza.
+            </p>
+          </div>
+
+          <!-- Qué les entrego (3 Pilares del Sistema Integral) -->
+          <div style="text-align: left; margin-top: 2rem;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">
+              📦 Qué incluye tu Sistema Integral de Atención y Reserva por WhatsApp:
+            </h3>
+          </div>
+
+          <div class="deliverables-grid">
+            <div class="deliverable-card">
+              <h4>🤖 Asistente virtual 24/7</h4>
+              <p>Responde al instante dudas sobre servicios, ubicación, requisitos y precios en cualquier momento del día.</p>
+            </div>
+
+            <div class="deliverable-card">
+              <h4>📅 Agenda inteligente integrada</h4>
+              <p>Muestra disponibilidad y permite a las clientas reservar su turno de forma autónoma según tus horarios.</p>
+            </div>
+
+            <div class="deliverable-card">
+              <h4>🔔 Recordatorios automáticos</h4>
+              <p>Envía avisos de confirmación por WhatsApp antes de cada cita para asegurar la asistencia de la clienta.</p>
+            </div>
+          </div>
+
+          <!-- Tarjeta Qué problema les saco -->
+          <div class="phrase-card" style="margin-top: 1.5rem;">
+            <div class="phrase-icon">💡</div>
+            <div class="phrase-text">
+              <strong>Qué problema te saco:</strong> Te saco el estrés de estar contestando mensajes mientras atendés, la pérdida de clientas por demoras en responder consultas de precios o disponibilidad fuera de horario, y los huecos en la agenda por turnos colgados o cancelados a último momento.
+            </div>
+          </div>
+
+          <!-- Objeción principal (sin título de etiqueta) -->
+          <div class="objection-card">
+            <div class="icon">💡</div>
+            <div>
+              <p>"No tengo tiempo para estar contestando mensajes y si demoro pierdo la clienta, pero tampoco quiero estar 24/7 pendiente del celular."</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 2: PARA QUIÉN SÍ / PARA QUIÉN NO
+         ========================================================================== -->
+    <section id="para-quien">
+      <div class="container">
+        <h2 class="section-title">¿Es este sistema para tu salón?</h2>
+        <p class="section-subtitle">A quién ayudo y a quién no. Evaluá si mi propuesta coincide exactamente con lo que necesita tu negocio.</p>
+
+        <div class="target-grid">
+          <!-- Tarjeta SÍ (3 viñetas) -->
+          <div class="target-card yes">
+            <span class="target-tag yes">✓ PARA QUIÉN SÍ</span>
+            <ul class="target-list yes">
+              <li>Salones de belleza, peluquerías, estudios de uñas y centros de estética tapados de trabajo.</li>
+              <li>Dueñas y dueños que pierden clientas por no poder responder el WhatsApp a tiempo o fuera de horario.</li>
+              <li>Negocios que sufren por ausencias a los turnos o cancelaciones a último momento.</li>
+            </ul>
+          </div>
+
+          <!-- Tarjeta NO (3 viñetas) -->
+          <div class="target-card no">
+            <span class="target-tag no">✕ PARA QUIÉN NO</span>
+            <ul class="target-list no">
+              <li>Quienes prefieren seguir anotando turnos a mano en una libreta de papel.</li>
+              <li>Negocios que buscan soluciones genéricas sin adaptación a su salón ni a sus profesionales.</li>
+              <li>Quienes no quieren digitalizar ni automatizar la atención de su negocio.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Objeción #2 (sin título de etiqueta) -->
+        <div class="objection-card">
+          <div class="icon">💡</div>
+          <div>
+            <p>"Capaz esto no se adapta al ritmo real de mi negocio o es una solución genérica para empresas gigantes."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 3: DEMO (ANTES Y DESPUÉS)
+         ========================================================================== -->
+    <section id="demo">
+      <div class="container">
+        <h2 class="section-title">El cambio en tu día a día: del caos de mensajes a la agenda llena.</h2>
+        <p class="section-subtitle">Mirá la diferencia entre gestionar tu agenda de forma manual vs. tener un sistema automatizado inteligente.</p>
+
+        <div class="demo-container">
+          <!-- Tarjetas Comparativas (Antes / Después) -->
+          <div class="comparison-grid">
+            <div class="comp-card before">
+              <div class="comp-title">⚠️ ANTES</div>
+              <p>Responder fuera de horario con cansancio, huecos en la agenda por cancelaciones a último momento y consultas repetidas de precios mientras atendés.</p>
+            </div>
+
+            <div class="comp-card after">
+              <div class="comp-title">✨ DESPUÉS</div>
+              <p>WhatsApp respondiendo al instante, confirmaciones automáticas que aseguran la asistencia y tu agenda ordenada sin mover un dedo.</p>
+            </div>
+
+            <!-- Objeción #3 (sin título de etiqueta) -->
+            <div class="objection-card" style="margin-top:0;">
+              <div class="icon">💡</div>
+              <div>
+                <p>"No me imagino cómo me va a cambiar la vida en el día a día ni si realmente funciona en la práctica."</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup visual de WhatsApp interactivo -->
+          <div class="phone-mockup">
+            <div class="whatsapp-header">
+              <div class="wa-avatar">E</div>
+              <div class="wa-info">
+                <div class="wa-name">Tu Salón (Asistente IA)</div>
+                <div class="wa-status">● En línea 24/7</div>
+              </div>
+            </div>
+
+            <div class="whatsapp-body">
+              <div class="chat-bubble client">
+                Hola! Quisiera saber precios de perfilado de cejas y si tienen turno para hoy a la tarde.
+                <div class="chat-time">14:02</div>
+              </div>
+
+              <div class="chat-bubble bot">
+                ¡Hola! 👋 Claro que sí. El perfilado está disponible. Disponemos de turno hoy a las 16:30hs o 18:00hs con Elina. ¿Cuál preferís?
+                <div class="chat-time">14:02</div>
+              </div>
+
+              <div class="chat-bubble client">
+                A las 16:30hs me queda perfecto!
+                <div class="chat-time">14:03</div>
+              </div>
+
+              <div class="chat-bubble bot">
+                ¡Excelente! 🎉 Tu turno quedó reservado para hoy 16:30hs. Te enviamos el recordatorio automático antes de la cita. ¡Te esperamos!
+                <div class="chat-time">14:03</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 4: CÓMO TRABAJO, PASO A PASO & REQUISITOS DEL CLIENTE
+         ========================================================================== -->
+    <section id="paso-a-paso">
+      <div class="container">
+        <h2 class="section-title">Listo y funcionando en tu salón en solo 7 a 10 días hábiles.</h2>
+        <p class="section-subtitle">En 7 a 10 días hábiles tenés el sistema configurado, probado y listo para funcionar en tu salón.</p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3>Paso 1: Relevamiento Inicial (30 min)</h3>
+            <p>"En una charla inicial de 30 minutos me pasás tus servicios, horarios y profesionales; del resto de la configuración y pruebas me encargo yo."</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3>Paso 2: Prueba y Capacitación (30 min)</h3>
+            <p>"Hacemos una prueba rápida de 30 minutos juntos, te capacito en dos pasos y el sistema queda 100% activo en tu WhatsApp actual."</p>
+          </div>
+        </div>
+
+        <!-- Qué tiene que poner el cliente -->
+        <div class="client-req-box">
+          <h3>📋 Qué tiene que poner el cliente:</h3>
+          <ul class="client-req-list">
+            <li>Tu lista actualizada de servicios, precios y preguntas frecuentes.</li>
+            <li>Los horarios de atención y la disponibilidad por profesional o sillón.</li>
+            <li>Acceso al número de WhatsApp del salón para realizar la vinculación.</li>
+            <li>30 minutos para la charla inicial de relevamiento y 30 minutos al final para la prueba y capacitación rápida.</li>
+          </ul>
+        </div>
+
+        <!-- Objeción #4 (sin título de etiqueta) -->
+        <div class="objection-card">
+          <div class="icon">💡</div>
+          <div>
+            <p>"Configurar esto me va a llevar semanas, me va a complicar la vida y me va a sacar tiempo de atención."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 5: CÓMO ARMO UN PRESUPUESTO
+         ========================================================================== -->
+    <section id="presupuesto">
+      <div class="container">
+        <div class="budget-box">
+          <div class="badge">Presupuesto Transparente</div>
+          <h2 class="section-title" style="margin-bottom:0.5rem;">Una solución a la medida exacta de tu equipo y tu volumen de turnos.</h2>
+
+          <div class="budget-phrases">
+            <div class="budget-phrase-item">
+              <span class="check">✓</span>
+              <div>
+                <strong>Diseño personalizado:</strong> "Cada salón es único: no es lo mismo un estudio unipersonal que un espacio con varios sillones y profesionales con distintos horarios."
+              </div>
+            </div>
+
+            <div class="budget-phrase-item">
+              <span class="check">✓</span>
+              <div>
+                <strong>Reunión individual:</strong> "El presupuesto exacto lo definimos en una reunión 1:1 de 20 minutos, únicamente <strong>después</strong> de mostrarte la demo en vivo y evaluar lo que tu salón necesita."
+              </div>
+            </div>
+          </div>
+
+          <!-- Objeción #5 (sin título de etiqueta) -->
+          <div class="objection-card" style="text-align: left;">
+            <div class="icon">💡</div>
+            <div>
+              <p>"Me van a querer vender un paquete enlatado carísimo que no se ajusta a lo que realmente uso."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 6: PREGUNTAS FRECUENTES (Cierre de las 6 objeciones clave)
+         ========================================================================== -->
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">Todo lo que necesitás saber antes de dar el paso.</h2>
+        <p class="section-subtitle">
+          Despejá todas tus dudas sobre tu número actual, la atención personalizada a tus clientas y el manejo de tu agenda. Respuestas claras, al grano y sin tecnicismos raros.
+        </p>
+
+        <div class="faq-wrapper">
+          <!-- Pregunta 1 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>1. ¿Tengo que cambiar el número de WhatsApp de mi salón?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p><strong>Respuesta:</strong> No, trabajamos sobre tu número actual de siempre. No perdés contactos ni chats.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>2. ¿Qué pasa si una clienta hace una pregunta muy específica o quiere hablar con una persona?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p><strong>Respuesta:</strong> El sistema detecta la consulta compleja, no responde a ciegas y te deriva el chat a vos o a tu recepción inmediatamente.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>3. ¿Es complicado de usar para mis clientas o para mí?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p><strong>Respuesta:</strong> Para las clientas es como chatear con una persona por WhatsApp. Para vos es facilísimo: ves la agenda limpia y ordenada desde tu celular o computadora.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>4. ¿Qué pasa si una clienta quiere cancelar o cambiar la hora de su turno?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p><strong>Respuesta:</strong> Lo hace directo desde el chat de WhatsApp con anticipación; el sistema libera ese turno automáticamente para que otra persona lo ocupe.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>5. ¿Sirve si en el salón trabajamos varias profesionales con distintos horarios?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p><strong>Respuesta:</strong> Sí, se configura la disponibilidad de cada profesional por separado para que la clienta elija con quién y cuándo atenderse.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 6 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>6. ¿Tengo que instalar programas raros o tener una computadora potente?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p><strong>Respuesta:</strong> Para nada. Todo corre directo en WhatsApp y la agenda se sincroniza con Google Calendar o una pantalla muy sencilla que abrís desde cualquier navegador.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN 7: LLAMADO A LA ACCIÓN FINAL (CTA)
+         ========================================================================== -->
+    <section id="cta-final" class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <h2 class="section-title">Dejá de perder clientas por demoras en responder.</h2>
+          
+          <div class="cta-phrases">
+            <p>"Agendá una charla de 20 minutos para ver la demo en vivo y descubrir cómo automatizar los turnos de tu salón."</p>
+            <p>"Analizamos tu caso puntual, te muestro el sistema en acción y definimos la propuesta ideal para vos."</p>
+          </div>
+
+          <a href="#" class="btn btn-whatsapp" id="btnCtaFinal" style="font-size: 1.15rem;">
+            Agendar reunión de 20 minutos
+          </a>
+
+          <!-- Cierre final (sin título de etiqueta) -->
+          <div class="objection-card" style="margin-top: 3rem; text-align: left;">
+            <div class="icon">💡</div>
+            <div>
+              <p>"Miedo a contratar a ciegas, perder tiempo o tener que tomar una decisión sin ver el sistema funcionando." -> En la llamada ves exactamente cómo funciona con una demo en vivo en tiempo real.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Elina - Automatización e Inteligencia Artificial para Salones de Belleza.</p>
+      <p style="margin-top:0.5rem;">Diseñado para maximizar reservas y liberar tu tiempo en WhatsApp.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT EMBEBIDO (INTERACTIVIDAD Y ACORDEÓN)
+       ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Menú Móvil Desplegable
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+        });
+      }
+
+      // 2. Acordeón interactivo para Preguntas Frecuentes (FAQ)
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+        const questionBtn = item.querySelector('.faq-question');
+        
+        questionBtn.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+          });
+
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // 3. Manejador para el botón CTA final
+      const btnCtaFinal = document.getElementById('btnCtaFinal');
+      if (btnCtaFinal) {
+        btnCtaFinal.addEventListener('click', function(e) {
+          if (this.getAttribute('href') === '#') {
+            e.preventDefault();
+            alert('¡Gracias por tu interés! Aquí podrás enlazar tu Calendly o tu WhatsApp personal para la llamada de 20 minutos.');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
