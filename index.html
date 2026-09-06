@@ -50,7 +50,6 @@
       --max-width: 1120px;
     }
 
-    /* Reset y configuraciones base */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -409,21 +408,8 @@
     }
 
     /* ==========================================================================
-       SECCIÓN 3: DEMO (ANTES Y DESPUÉS + MOCKUP CHAT)
+       SECCIÓN 3: DEMO INTERACTIVA (DOS COLUMNAS WHATSAPP)
        ========================================================================== */
-    .demo-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .comparison-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
     .comp-card {
       padding: 1.75rem;
       border-radius: var(--radius-md);
@@ -432,7 +418,8 @@
     }
 
     .comp-card.before {
-      border-left: 4px solid #f59e0b;
+      border-left: 4px solid #ef4444;
+      background: rgba(239, 68, 68, 0.03);
     }
 
     .comp-card.after {
@@ -449,18 +436,128 @@
       gap: 0.5rem;
     }
 
-    .comp-card.before .comp-title { color: #f59e0b; }
+    .comp-card.before .comp-title { color: #ef4444; }
     .comp-card.after .comp-title { color: var(--accent-whatsapp); }
 
-    .phone-mockup {
-      background: #111b21;
-      border: 10px solid #1f2937;
-      border-radius: 36px;
+    .demo-interactive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+      margin-bottom: 1.5rem;
+    }
+
+    .chaotic-inbox-card {
+      background: #111524;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chaotic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 1rem;
+    }
+
+    .chaotic-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ef4444;
+    }
+
+    .chaotic-badge {
+      font-size: 0.75rem;
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+    }
+
+    .chaotic-chat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .chaotic-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .item-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #374151;
+      color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .item-info {
+      flex: 1;
       overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-      max-width: 380px;
-      margin: 0 auto;
-      width: 100%;
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .item-name {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .item-time {
+      color: var(--text-dim);
+      font-size: 0.72rem;
+    }
+
+    .item-msg {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .alert-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #f87171;
+      background: rgba(239, 68, 68, 0.15);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .interactive-whatsapp-card {
+      background: #111b21;
+      border: 1px solid var(--accent-whatsapp);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-wa);
     }
 
     .whatsapp-header {
@@ -502,7 +599,8 @@
       gap: 0.85rem;
       background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
       background-size: 12px 12px;
-      min-height: 340px;
+      height: 290px;
+      overflow-y: auto;
     }
 
     .chat-bubble {
@@ -515,17 +613,17 @@
     }
 
     .chat-bubble.client {
-      align-self: flex-start;
-      background: #202c33;
-      color: #e9edef;
-      border-top-left-radius: 2px;
-    }
-
-    .chat-bubble.bot {
       align-self: flex-end;
       background: #005c4b;
       color: #e9edef;
       border-top-right-radius: 2px;
+    }
+
+    .chat-bubble.bot {
+      align-self: flex-start;
+      background: #202c33;
+      color: #e9edef;
+      border-top-left-radius: 2px;
     }
 
     .chat-time {
@@ -533,6 +631,69 @@
       color: rgba(241, 245, 249, 0.6);
       text-align: right;
       margin-top: 0.25rem;
+    }
+
+    .chat-quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0.6rem 0.8rem;
+      background: #1f2c34;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .chat-quick-btn {
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      color: #25d366;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .chat-quick-btn:hover {
+      background: var(--accent-whatsapp);
+      color: #0b0d14;
+    }
+
+    .chat-input-bar {
+      display: flex;
+      padding: 0.6rem;
+      background: #202c33;
+      gap: 0.5rem;
+    }
+
+    .chat-input-bar input {
+      flex: 1;
+      background: #2a3942;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      color: #e9edef;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .chat-input-bar button {
+      background: var(--accent-whatsapp);
+      border: none;
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .chat-input-bar button:hover {
+      background: var(--accent-whatsapp-hover);
     }
 
     /* ==========================================================================
@@ -795,7 +956,7 @@
        RESPONSIVE DESIGN (MEDIA QUERIES)
        ========================================================================== */
     @media (max-width: 900px) {
-      .demo-container {
+      .demo-interactive-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -846,20 +1007,17 @@
         <span>Elina</span> | Salón 24/7
       </a>
 
-      <!-- Botón menú celular -->
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">☰</button>
 
-      <!-- Enlaces principales -->
       <ul class="nav-links" id="navLinks">
         <li><a href="#quien-soy">Quién soy</a></li>
         <li><a href="#para-quien">¿Para quién es?</a></li>
-        <li><a href="#demo">Demo</a></li>
+        <li><a href="#demo">Demo Interactiva</a></li>
         <li><a href="#paso-a-paso">Paso a paso</a></li>
         <li><a href="#presupuesto">Presupuesto</a></li>
         <li><a href="#faq">Preguntas Frecuentes</a></li>
       </ul>
 
-      <!-- Botón CTA en header -->
       <a href="#cta-final" class="btn btn-primary nav-cta">Agendar reunión</a>
     </div>
   </header>
@@ -873,19 +1031,16 @@
         <div class="hero-content">
           <div class="badge">✨ Solución Integral de IA para Salones</div>
           
-          <!-- Oferta concreta en el Hero -->
           <h1 class="hero-title">
             Sistema de reservas y atención 24/7 por WhatsApp para salones de belleza: <span>atendé a tus clientas y llená tu agenda sin soltar la tijera ni el pincel.</span>
           </h1>
 
-          <!-- Presentación Quién Soy -->
           <div class="bio-card">
             <p>
               Soy <strong>Elina</strong>, especialista en soluciones de Inteligencia Artificial y automatización enfocada en optimizar la atención y gestión de negocios de estética y belleza.
             </p>
           </div>
 
-          <!-- Qué les entrego (3 Pilares del Sistema Integral) -->
           <div style="text-align: left; margin-top: 2rem;">
             <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">
               📦 Qué incluye tu Sistema Integral de Atención y Reserva por WhatsApp:
@@ -909,7 +1064,6 @@
             </div>
           </div>
 
-          <!-- Tarjeta Qué problema les saco -->
           <div class="phrase-card" style="margin-top: 1.5rem;">
             <div class="phrase-icon">💡</div>
             <div class="phrase-text">
@@ -917,7 +1071,6 @@
             </div>
           </div>
 
-          <!-- Objeción principal (sin título de etiqueta) -->
           <div class="objection-card">
             <div class="icon">💡</div>
             <div>
@@ -938,7 +1091,6 @@
         <p class="section-subtitle">A quién ayudo y a quién no. Evaluá si mi propuesta coincide exactamente con lo que necesita tu negocio.</p>
 
         <div class="target-grid">
-          <!-- Tarjeta SÍ (3 viñetas) -->
           <div class="target-card yes">
             <span class="target-tag yes">✓ PARA QUIÉN SÍ</span>
             <ul class="target-list yes">
@@ -948,7 +1100,6 @@
             </ul>
           </div>
 
-          <!-- Tarjeta NO (3 viñetas) -->
           <div class="target-card no">
             <span class="target-tag no">✕ PARA QUIÉN NO</span>
             <ul class="target-list no">
@@ -959,7 +1110,6 @@
           </div>
         </div>
 
-        <!-- Objeción #2 (sin título de etiqueta) -->
         <div class="objection-card">
           <div class="icon">💡</div>
           <div>
@@ -970,67 +1120,126 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 3: DEMO (ANTES Y DESPUÉS)
+         SECCIÓN 3: DEMO INTERACTIVA (WHATSAPP DE MENTIRA EN 2 COLUMNAS)
          ========================================================================== -->
     <section id="demo">
       <div class="container">
         <h2 class="section-title">El cambio en tu día a día: del caos de mensajes a la agenda llena.</h2>
-        <p class="section-subtitle">Mirá la diferencia entre gestionar tu agenda de forma manual vs. tener un sistema automatizado inteligente.</p>
+        <p class="section-subtitle">Compará la bandeja caótica manual sin automatización vs. la atención automática 24/7 con IA.</p>
 
-        <div class="demo-container">
-          <!-- Tarjetas Comparativas (Antes / Después) -->
-          <div class="comparison-grid">
-            <div class="comp-card before">
-              <div class="comp-title">⚠️ ANTES</div>
-              <p>Responder fuera de horario con cansancio, huecos en la agenda por cancelaciones a último momento y consultas repetidas de precios mientras atendés.</p>
+        <!-- 1) Frase del ANTES -->
+        <div class="comp-card before" style="margin-bottom: 2rem;">
+          <div class="comp-title">⚠️ ANTES DE AUTOMATIZAR</div>
+          <p>Bandeja de WhatsApp estallada de mensajes sin responder, clientas esperando horas por un turno y consultas repetidas mientras atendés con las manos ocupadas.</p>
+        </div>
+
+        <!-- 2) DEMO INTERACTIVA (2 COLUMNAS) -->
+        <div class="demo-interactive-grid">
+          
+          <!-- Columna 1: Bandeja Caótica (Sin Automatización) -->
+          <div class="chaotic-inbox-card">
+            <div class="chaotic-header">
+              <div class="chaotic-title">🔴 SIN AUTOMATIZACIÓN</div>
+              <div class="chaotic-badge">18 Mensajes sin responder</div>
             </div>
 
-            <div class="comp-card after">
-              <div class="comp-title">✨ DESPUÉS</div>
-              <p>WhatsApp respondiendo al instante, confirmaciones automáticas que aseguran la asistencia y tu agenda ordenada sin mover un dedo.</p>
-            </div>
+            <div class="chaotic-chat-list">
+              <div class="chaotic-item">
+                <div class="item-avatar">V</div>
+                <div class="item-info">
+                  <div class="item-top">
+                    <span class="item-name">Valentina (Uñas)</span>
+                    <span class="item-time">Hace 4hs</span>
+                  </div>
+                  <div class="item-msg">Hola!! Tienen lugar para esculpidas hoy? Siguen ahí??</div>
+                </div>
+                <span class="alert-tag">🔴 Demora +4h</span>
+              </div>
 
-            <!-- Objeción #3 (sin título de etiqueta) -->
-            <div class="objection-card" style="margin-top:0;">
-              <div class="icon">💡</div>
-              <div>
-                <p>"No me imagino cómo me va a cambiar la vida en el día a día ni si realmente funciona en la práctica."</p>
+              <div class="chaotic-item">
+                <div class="item-avatar">S</div>
+                <div class="item-info">
+                  <div class="item-top">
+                    <span class="item-name">Sofía (Coloración)</span>
+                    <span class="item-time">23:45 hs</span>
+                  </div>
+                  <div class="item-msg">Hola buenas noches, cuánto sale el balayage y alisado?</div>
+                </div>
+                <span class="alert-tag">🌙 Fuera de hora</span>
+              </div>
+
+              <div class="chaotic-item">
+                <div class="item-avatar">C</div>
+                <div class="item-info">
+                  <div class="item-top">
+                    <span class="item-name">Camila (Cita hoy)</span>
+                    <span class="item-time">Hace 2hs</span>
+                  </div>
+                  <div class="item-msg">Cancelo mi turno de las 17hs por un imprevisto...</div>
+                </div>
+                <span class="alert-tag">⚠️ Hueco libre</span>
+              </div>
+
+              <div class="chaotic-item">
+                <div class="item-avatar">M</div>
+                <div class="item-info">
+                  <div class="item-top">
+                    <span class="item-name">Mariana</span>
+                    <span class="item-time">Hace 1h</span>
+                  </div>
+                  <div class="item-msg">Ya me atendí en otro lugar porque tardaron mucho...</div>
+                </div>
+                <span class="alert-tag">❌ Clienta perdida</span>
               </div>
             </div>
           </div>
 
-          <!-- Mockup visual de WhatsApp interactivo -->
-          <div class="phone-mockup">
+          <!-- Columna 2: Simulador WhatsApp Asistente IA (En Vivo / Usable) -->
+          <div class="interactive-whatsapp-card">
             <div class="whatsapp-header">
               <div class="wa-avatar">E</div>
               <div class="wa-info">
-                <div class="wa-name">Tu Salón (Asistente IA)</div>
-                <div class="wa-status">● En línea 24/7</div>
+                <div class="wa-name">Tu Salón (Asistente IA 24/7)</div>
+                <div class="wa-status">● En línea (Probá enviar un mensaje)</div>
               </div>
             </div>
 
-            <div class="whatsapp-body">
-              <div class="chat-bubble client">
-                Hola! Quisiera saber precios de perfilado de cejas y si tienen turno para hoy a la tarde.
-                <div class="chat-time">14:02</div>
-              </div>
-
+            <!-- Mensajes del Chat -->
+            <div class="whatsapp-body" id="interactiveChatBody">
               <div class="chat-bubble bot">
-                ¡Hola! 👋 Claro que sí. El perfilado está disponible. Disponemos de turno hoy a las 16:30hs o 18:00hs con Elina. ¿Cuál preferís?
-                <div class="chat-time">14:02</div>
+                ¡Hola! 👋 Bienvenido/a a la Demo en vivo de tu Salón de Belleza. Tocá un botón abajo o escribí tu consulta 👇
+                <div class="chat-time">En línea</div>
               </div>
+            </div>
 
-              <div class="chat-bubble client">
-                A las 16:30hs me queda perfecto!
-                <div class="chat-time">14:03</div>
-              </div>
+            <!-- Botones de rápida consulta -->
+            <div class="chat-quick-actions">
+              <button class="chat-quick-btn" data-query="¿Cuáles son los precios de manicuría y perfilado?">💰 Precios</button>
+              <button class="chat-quick-btn" data-query="¿Qué turnos tienen libres para hoy?">📅 Turnos Hoy</button>
+              <button class="chat-quick-btn" data-query="¿Dónde están ubicados y cuáles son los horarios?">📍 Horarios</button>
+              <button class="chat-quick-btn" data-query="Necesito cancelar o cambiar mi turno">❌ Cancelar Turno</button>
+            </div>
 
-              <div class="chat-bubble bot">
-                ¡Excelente! 🎉 Tu turno quedó reservado para hoy 16:30hs. Te enviamos el recordatorio automático antes de la cita. ¡Te esperamos!
-                <div class="chat-time">14:03</div>
-              </div>
+            <!-- Input Bar -->
+            <div class="chat-input-bar">
+              <input type="text" id="chatUserInput" placeholder="Escribí tu consulta de ejemplo..." autocomplete="off">
+              <button id="chatSendBtn" aria-label="Enviar mensaje">➤</button>
             </div>
           </div>
+
+        </div>
+
+        <!-- 3) Frase del DESPUÉS -->
+        <div class="comp-card after" style="margin-top: 2rem;">
+          <div class="comp-title">✨ DESPUÉS DE AUTOMATIZAR</div>
+          <p>WhatsApp respondiendo al instante las 24hs, confirmaciones automáticas que aseguran la asistencia y tu agenda ordenada sin mover un dedo.</p>
+        </div>
+
+        <!-- Botón de Cierre al final de la Demo -->
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="#cta-final" class="btn btn-whatsapp" style="font-size: 1.1rem; padding: 1.2rem 2.4rem;">
+            ¿Lo ves claro? Agendá 20 minutos y te armo la versión para tu negocio
+          </a>
         </div>
 
       </div>
@@ -1058,7 +1267,6 @@
           </div>
         </div>
 
-        <!-- Qué tiene que poner el cliente -->
         <div class="client-req-box">
           <h3>📋 Qué tiene que poner el cliente:</h3>
           <ul class="client-req-list">
@@ -1069,7 +1277,6 @@
           </ul>
         </div>
 
-        <!-- Objeción #4 (sin título de etiqueta) -->
         <div class="objection-card">
           <div class="icon">💡</div>
           <div>
@@ -1104,7 +1311,6 @@
             </div>
           </div>
 
-          <!-- Objeción #5 (sin título de etiqueta) -->
           <div class="objection-card" style="text-align: left;">
             <div class="icon">💡</div>
             <div>
@@ -1126,7 +1332,6 @@
         </p>
 
         <div class="faq-wrapper">
-          <!-- Pregunta 1 -->
           <div class="faq-item">
             <button class="faq-question">
               <span>1. ¿Tengo que cambiar el número de WhatsApp de mi salón?</span>
@@ -1139,7 +1344,6 @@
             </div>
           </div>
 
-          <!-- Pregunta 2 -->
           <div class="faq-item">
             <button class="faq-question">
               <span>2. ¿Qué pasa si una clienta hace una pregunta muy específica o quiere hablar con una persona?</span>
@@ -1152,7 +1356,6 @@
             </div>
           </div>
 
-          <!-- Pregunta 3 -->
           <div class="faq-item">
             <button class="faq-question">
               <span>3. ¿Es complicado de usar para mis clientas o para mí?</span>
@@ -1165,7 +1368,6 @@
             </div>
           </div>
 
-          <!-- Pregunta 4 -->
           <div class="faq-item">
             <button class="faq-question">
               <span>4. ¿Qué pasa si una clienta quiere cancelar o cambiar la hora de su turno?</span>
@@ -1178,7 +1380,6 @@
             </div>
           </div>
 
-          <!-- Pregunta 5 -->
           <div class="faq-item">
             <button class="faq-question">
               <span>5. ¿Sirve si en el salón trabajamos varias profesionales con distintos horarios?</span>
@@ -1191,7 +1392,6 @@
             </div>
           </div>
 
-          <!-- Pregunta 6 -->
           <div class="faq-item">
             <button class="faq-question">
               <span>6. ¿Tengo que instalar programas raros o tener una computadora potente?</span>
@@ -1203,7 +1403,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -1225,7 +1424,6 @@
             Agendar reunión de 20 minutos
           </a>
 
-          <!-- Cierre final (sin título de etiqueta) -->
           <div class="objection-card" style="margin-top: 3rem; text-align: left;">
             <div class="icon">💡</div>
             <div>
@@ -1237,9 +1435,6 @@
     </section>
   </main>
 
-  <!-- ==========================================================================
-       FOOTER
-       ========================================================================== -->
   <footer>
     <div class="container">
       <p>© 2026 Elina - Automatización e Inteligencia Artificial para Salones de Belleza.</p>
@@ -1248,7 +1443,7 @@
   </footer>
 
   <!-- ==========================================================================
-       JAVASCRIPT EMBEBIDO (INTERACTIVIDAD Y ACORDEÓN)
+       JAVASCRIPT EMBEBIDO (INTERACTIVIDAD Y DEMO CHAT)
        ========================================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1264,20 +1459,12 @@
 
       // 2. Acordeón interactivo para Preguntas Frecuentes (FAQ)
       const faqItems = document.querySelectorAll('.faq-item');
-
       faqItems.forEach(item => {
         const questionBtn = item.querySelector('.faq-question');
-        
         questionBtn.addEventListener('click', () => {
           const isActive = item.classList.contains('active');
-          
-          faqItems.forEach(otherItem => {
-            otherItem.classList.remove('active');
-          });
-
-          if (!isActive) {
-            item.classList.add('active');
-          }
+          faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+          if (!isActive) item.classList.add('active');
         });
       });
 
@@ -1291,6 +1478,79 @@
           }
         });
       }
+
+      // 4. LÓGICA DEL CHAT DE DEMO INTERACTIVA
+      const chatContainer = document.getElementById('interactiveChatBody');
+      const chatInput = document.getElementById('chatUserInput');
+      const sendBtn = document.getElementById('chatSendBtn');
+      const quickBtns = document.querySelectorAll('.chat-quick-btn');
+
+      function appendMessage(sender, text) {
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${sender}`;
+        bubble.innerHTML = `${text}<div class="chat-time">${time}</div>`;
+        chatContainer.appendChild(bubble);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+
+      function simulateBotResponse(userText) {
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'chat-bubble bot';
+        typingIndicator.id = 'typingIndicator';
+        typingIndicator.style.fontStyle = 'italic';
+        typingIndicator.style.color = '#a0aec0';
+        typingIndicator.innerHTML = 'Escribiendo...';
+        chatContainer.appendChild(typingIndicator);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        setTimeout(() => {
+          const indicator = document.getElementById('typingIndicator');
+          if (indicator) indicator.remove();
+
+          const text = userText.toLowerCase();
+          let botReply = "";
+
+          if (text.includes('precio') || text.includes('cuanto') || text.includes('costo') || text.includes('manicuria') || text.includes('cejas')) {
+            botReply = "¡Hola! ✨ Nuestros servicios de belleza más consultados:<br>• 💅 <strong>Manicuría Semipermanente:</strong> $6.500<br>• 👁️ <strong>Perfilado + Laminado de Cejas:</strong> $5.000<br>• 💇‍♀️ <strong>Corte & Nutrición Capilar:</strong> $9.000<br><br>¿Te gustaría agendar un turno para hoy o esta semana?";
+          } else if (text.includes('turno') || text.includes('disponib') || text.includes('hoy') || text.includes('lugar') || text.includes('hora')) {
+            botReply = "📅 <strong>Disponibilidad inmediata para hoy:</strong><br>• 15:30 hs con Elina<br>• 17:00 hs con Sofía<br>• 18:30 hs con Elina<br><br>Respondé con la hora que te convenga y te guardo la cita al instante.";
+          } else if (text.includes('horario') || text.includes('donde') || text.includes('ubicacion') || text.includes('direccion') || text.includes('abren')) {
+            botReply = "📍 <strong>Ubicación:</strong> Av. Principal 1240, Estudio 3.<br>⏰ <strong>Horarios de atención:</strong> Martes a Sábado de 09:00 a 20:00 hs.<br><br>¿Querés que te agende una cita?";
+          } else if (text.includes('cancelar') || text.includes('cambiar') || text.includes('mover')) {
+            botReply = "Entendido 👍 Decinos tu nombre y el horario de tu turno. Liberamos tu lugar automáticamente en la agenda y podés reprogramar cuando gustes.";
+          } else {
+            botReply = "¡Gracias por comunicarte! 👋 Soy la Asistente Virtual del Salón. Puedo brindarte precios, mostrarte disponibilidad de turnos o agendar tu cita en segundos. ¿En qué te ayudo?";
+          }
+
+          appendMessage('bot', botReply);
+        }, 800);
+      }
+
+      if (sendBtn && chatInput) {
+        sendBtn.addEventListener('click', () => {
+          const msg = chatInput.value.trim();
+          if (msg) {
+            appendMessage('client', msg);
+            chatInput.value = '';
+            simulateBotResponse(msg);
+          }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') sendBtn.click();
+        });
+      }
+
+      quickBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const query = btn.getAttribute('data-query');
+          if (query) {
+            appendMessage('client', query);
+            simulateBotResponse(query);
+          }
+        });
+      });
     });
   </script>
 </body>

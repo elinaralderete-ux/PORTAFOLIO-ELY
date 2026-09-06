@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Interactiva | Elina - Sistema de Reservas para Salones</title>
+  <meta name="description" content="Probá la demo interactiva en vivo de WhatsApp para Salones de Belleza. Simulador en tiempo real de reservas, consultas de precios y horarios.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0b0d14;
+      --bg-card: rgba(22, 27, 46, 0.7);
+      --accent-rose: #e8a5b8;
+      --accent-gold: #e0a96d;
+      --accent-whatsapp: #25d366;
+      --accent-whatsapp-hover: #20bd5a;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-light: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(232, 165, 184, 0.25);
+      --gradient-rose-gold: linear-gradient(135deg, #e8a5b8 0%, #e0a96d 100%);
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --shadow-wa: 0 10px 25px -5px rgba(37, 211, 102, 0.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+    .container { max-width: 1060px; margin: 0 auto; }
+
+    .header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+    .logo { font-size: 1.3rem; font-weight: 800; color: #fff; text-decoration: none; }
+    .logo span { background: var(--gradient-rose-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .btn-back { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    .btn-back:hover { color: var(--accent-rose); }
+
+    .demo-title { font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 0.5rem; }
+    .demo-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.05rem; }
+
+    .comp-card { padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-bottom: 2rem; }
+    .comp-card.before { border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.03); }
+    .comp-card.after { border-left: 4px solid var(--accent-whatsapp); background: rgba(37, 211, 102, 0.03); }
+    .comp-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .comp-card.before .comp-title { color: #ef4444; }
+    .comp-card.after .comp-title { color: var(--accent-whatsapp); }
+
+    .demo-interactive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+    @media (max-width: 850px) { .demo-interactive-grid { grid-template-columns: 1fr; } }
+
+    .chaotic-inbox-card { background: #111524; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-lg); padding: 1.25rem; display: flex; flex-direction: column; }
+    .chaotic-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.85rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 1rem; }
+    .chaotic-title { font-size: 0.95rem; font-weight: 800; color: #ef4444; }
+    .chaotic-badge { font-size: 0.75rem; background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-weight: 600; }
+    .chaotic-chat-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .chaotic-item { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-md); padding: 0.75rem 0.9rem; display: flex; align-items: center; gap: 0.75rem; }
+    .item-avatar { width: 36px; height: 36px; border-radius: 50%; background: #374151; color: #f3f4f6; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+    .item-info { flex: 1; overflow: hidden; }
+    .item-top { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.2rem; }
+    .item-name { font-weight: 700; color: var(--text-main); }
+    .item-time { color: var(--text-muted); font-size: 0.72rem; }
+    .item-msg { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .alert-tag { font-size: 0.7rem; font-weight: 700; color: #f87171; background: rgba(239, 68, 68, 0.15); padding: 0.15rem 0.45rem; border-radius: 4px; flex-shrink: 0; }
+
+    .interactive-whatsapp-card { background: #111b21; border: 1px solid var(--accent-whatsapp); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-wa); }
+    .whatsapp-header { background: #202c33; padding: 1rem; display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .wa-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-rose-gold); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #0b0d14; }
+    .wa-info .wa-name { font-size: 0.95rem; font-weight: 700; color: #e9edef; }
+    .wa-info .wa-status { font-size: 0.75rem; color: var(--accent-whatsapp); }
+    .whatsapp-body { padding: 1.25rem 1rem; display: flex; flex-direction: column; gap: 0.85rem; background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0); background-size: 12px 12px; height: 300px; overflow-y: auto; }
+    .chat-bubble { max-width: 82%; padding: 0.75rem 0.9rem; border-radius: 12px; font-size: 0.88rem; line-height: 1.4; }
+    .chat-bubble.client { align-self: flex-end; background: #005c4b; color: #e9edef; border-top-right-radius: 2px; }
+    .chat-bubble.bot { align-self: flex-start; background: #202c33; color: #e9edef; border-top-left-radius: 2px; }
+    .chat-time { font-size: 0.65rem; color: rgba(241, 245, 249, 0.6); text-align: right; margin-top: 0.25rem; }
+
+    .chat-quick-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.6rem 0.8rem; background: #1f2c34; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .chat-quick-btn { background: rgba(37, 211, 102, 0.12); border: 1px solid rgba(37, 211, 102, 0.3); color: #25d366; font-size: 0.75rem; font-weight: 600; padding: 0.35rem 0.7rem; border-radius: var(--radius-full); cursor: pointer; transition: all 0.2s; }
+    .chat-quick-btn:hover { background: var(--accent-whatsapp); color: #0b0d14; }
+
+    .chat-input-bar { display: flex; padding: 0.6rem; background: #202c33; gap: 0.5rem; }
+    .chat-input-bar input { flex: 1; background: #2a3942; border: none; border-radius: 20px; padding: 0.5rem 1rem; color: #e9edef; font-size: 0.85rem; outline: none; }
+    .chat-input-bar button { background: var(--accent-whatsapp); border: none; color: #ffffff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+
+    .btn-cta { display: inline-flex; align-items: center; justify-content: center; padding: 1.2rem 2.4rem; border-radius: var(--radius-full); background: var(--accent-whatsapp); color: #fff; font-size: 1.1rem; font-weight: 700; text-decoration: none; box-shadow: var(--shadow-wa); transition: all 0.3s; }
+    .btn-cta:hover { background: #20bd5a; transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-nav">
+      <a href="index.html" class="logo"><span>Elina</span> | Salón 24/7</a>
+      <a href="index.html" class="btn-back">← Volver al sitio principal</a>
+    </div>
+
+    <h1 class="demo-title">Demo Interactiva de WhatsApp en Vivo</h1>
+    <p class="demo-subtitle">Probá la experiencia de tus clientas cuando te escriben por WhatsApp a cualquier hora del día.</p>
+
+    <!-- ANTES -->
+    <div class="comp-card before">
+      <div class="comp-title">⚠️ ANTES DE AUTOMATIZAR</div>
+      <p>Bandeja de WhatsApp estallada de mensajes sin responder, clientas esperando horas por un turno y consultas repetidas mientras atendés con las manos ocupadas.</p>
+    </div>
+
+    <!-- DEMO 2 COLUMNAS -->
+    <div class="demo-interactive-grid">
+      <!-- Columna 1 -->
+      <div class="chaotic-inbox-card">
+        <div class="chaotic-header">
+          <div class="chaotic-title">🔴 SIN AUTOMATIZACIÓN</div>
+          <div class="chaotic-badge">18 Mensajes sin responder</div>
+        </div>
+        <div class="chaotic-chat-list">
+          <div class="chaotic-item">
+            <div class="item-avatar">V</div>
+            <div class="item-info">
+              <div class="item-top"><span class="item-name">Valentina (Uñas)</span><span class="item-time">Hace 4hs</span></div>
+              <div class="item-msg">Hola!! Tienen lugar para esculpidas hoy? Siguen ahí??</div>
+            </div>
+            <span class="alert-tag">🔴 Demora +4h</span>
+          </div>
+          <div class="chaotic-item">
+            <div class="item-avatar">S</div>
+            <div class="item-info">
+              <div class="item-top"><span class="item-name">Sofía (Coloración)</span><span class="item-time">23:45 hs</span></div>
+              <div class="item-msg">Hola buenas noches, cuánto sale el balayage y alisado?</div>
+            </div>
+            <span class="alert-tag">🌙 Fuera de hora</span>
+          </div>
+          <div class="chaotic-item">
+            <div class="item-avatar">C</div>
+            <div class="item-info">
+              <div class="item-top"><span class="item-name">Camila (Cita hoy)</span><span class="item-time">Hace 2hs</span></div>
+              <div class="item-msg">Cancelo mi turno de las 17hs por un imprevisto...</div>
+            </div>
+            <span class="alert-tag">⚠️ Hueco libre</span>
+          </div>
+          <div class="chaotic-item">
+            <div class="item-avatar">M</div>
+            <div class="item-info">
+              <div class="item-top"><span class="item-name">Mariana</span><span class="item-time">Hace 1h</span></div>
+              <div class="item-msg">Ya me atendí en otro lugar porque tardaron mucho...</div>
+            </div>
+            <span class="alert-tag">❌ Clienta perdida</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2 -->
+      <div class="interactive-whatsapp-card">
+        <div class="whatsapp-header">
+          <div class="wa-avatar">E</div>
+          <div class="wa-info">
+            <div class="wa-name">Tu Salón (Asistente IA 24/7)</div>
+            <div class="wa-status">● En línea (Probá interactuar)</div>
+          </div>
+        </div>
+        <div class="whatsapp-body" id="interactiveChatBody">
+          <div class="chat-bubble bot">
+            ¡Hola! 👋 Bienvenido/a a la Demo en vivo de tu Salón de Belleza. Tocá un botón abajo o escribí tu consulta 👇
+            <div class="chat-time">En línea</div>
+          </div>
+        </div>
+        <div class="chat-quick-actions">
+          <button class="chat-quick-btn" data-query="¿Cuáles son los precios de manicuría y perfilado?">💰 Precios</button>
+          <button class="chat-quick-btn" data-query="¿Qué turnos tienen libres para hoy?">📅 Turnos Hoy</button>
+          <button class="chat-quick-btn" data-query="¿Dónde están ubicados y cuáles son los horarios?">📍 Horarios</button>
+          <button class="chat-quick-btn" data-query="Necesito cancelar o cambiar mi turno">❌ Cancelar Turno</button>
+        </div>
+        <div class="chat-input-bar">
+          <input type="text" id="chatUserInput" placeholder="Escribí tu consulta de ejemplo..." autocomplete="off">
+          <button id="chatSendBtn" aria-label="Enviar mensaje">➤</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESPUÉS -->
+    <div class="comp-card after">
+      <div class="comp-title">✨ DESPUÉS DE AUTOMATIZAR</div>
+      <p>WhatsApp respondiendo al instante las 24hs, confirmaciones automáticas que aseguran la asistencia y tu agenda ordenada sin mover un dedo.</p>
+    </div>
+
+    <!-- BOTÓN FINAL -->
+    <div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">
+      <a href="index.html#cta-final" class="btn-cta">
+        ¿Lo ves claro? Agendá 20 minutos y te armo la versión para tu negocio
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const chatContainer = document.getElementById('interactiveChatBody');
+      const chatInput = document.getElementById('chatUserInput');
+      const sendBtn = document.getElementById('chatSendBtn');
+      const quickBtns = document.querySelectorAll('.chat-quick-btn');
+
+      function appendMessage(sender, text) {
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble ${sender}`;
+        bubble.innerHTML = `${text}<div class="chat-time">${time}</div>`;
+        chatContainer.appendChild(bubble);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+
+      function simulateBotResponse(userText) {
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'chat-bubble bot';
+        typingIndicator.id = 'typingIndicator';
+        typingIndicator.style.fontStyle = 'italic';
+        typingIndicator.style.color = '#a0aec0';
+        typingIndicator.innerHTML = 'Escribiendo...';
+        chatContainer.appendChild(typingIndicator);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        setTimeout(() => {
+          const indicator = document.getElementById('typingIndicator');
+          if (indicator) indicator.remove();
+
+          const text = userText.toLowerCase();
+          let botReply = "";
+
+          if (text.includes('precio') || text.includes('cuanto') || text.includes('costo') || text.includes('manicuria') || text.includes('cejas')) {
+            botReply = "¡Hola! ✨ Nuestros servicios de belleza más consultados:<br>• 💅 <strong>Manicuría Semipermanente:</strong> $6.500<br>• 👁️ <strong>Perfilado + Laminado de Cejas:</strong> $5.000<br>• 💇‍♀️ <strong>Corte & Nutrición Capilar:</strong> $9.000<br><br>¿Te gustaría agendar un turno para hoy o esta semana?";
+          } else if (text.includes('turno') || text.includes('disponib') || text.includes('hoy') || text.includes('lugar') || text.includes('hora')) {
+            botReply = "📅 <strong>Disponibilidad inmediata para hoy:</strong><br>• 15:30 hs con Elina<br>• 17:00 hs con Sofía<br>• 18:30 hs con Elina<br><br>Respondé con la hora que te convenga y te guardo la cita al instante.";
+          } else if (text.includes('horario') || text.includes('donde') || text.includes('ubicacion') || text.includes('direccion') || text.includes('abren')) {
+            botReply = "📍 <strong>Ubicación:</strong> Av. Principal 1240, Estudio 3.<br>⏰ <strong>Horarios de atención:</strong> Martes a Sábado de 09:00 a 20:00 hs.<br><br>¿Querés que te agende una cita?";
+          } else if (text.includes('cancelar') || text.includes('cambiar') || text.includes('mover')) {
+            botReply = "Entendido 👍 Decinos tu nombre y el horario de tu turno. Liberamos tu lugar automáticamente en la agenda y podés reprogramar cuando gustes.";
+          } else {
+            botReply = "¡Gracias por comunicarte! 👋 Soy la Asistente Virtual del Salón. Puedo brindarte precios, mostrarte disponibilidad de turnos o agendar tu cita en segundos. ¿En qué te ayudo?";
+          }
+
+          appendMessage('bot', botReply);
+        }, 800);
+      }
+
+      if (sendBtn && chatInput) {
+        sendBtn.addEventListener('click', () => {
+          const msg = chatInput.value.trim();
+          if (msg) {
+            appendMessage('client', msg);
+            chatInput.value = '';
+            simulateBotResponse(msg);
+          }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') sendBtn.click();
+        });
+      }
+
+      quickBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const query = btn.getAttribute('data-query');
+          if (query) {
+            appendMessage('client', query);
+            simulateBotResponse(query);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
