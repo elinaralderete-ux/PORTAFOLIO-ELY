@@ -697,12 +697,12 @@
     }
 
     /* ==========================================================================
-       SECCIÓN 4: CÓMO TRABAJO, PASO A PASO & REQUISITOS DEL CLIENTE
+       SECCIÓN 4: CÓMO TRABAJO, PASO A PASO EN 6 PASOS
        ========================================================================== */
     .steps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.75rem;
       margin-bottom: 2.5rem;
     }
 
@@ -710,35 +710,40 @@
       background: var(--bg-card);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
-      padding: 2.25rem 1.75rem;
+      padding: 2rem 1.75rem;
       position: relative;
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
     }
 
     .step-card:hover {
       border-color: var(--border-accent);
       transform: translateY(-4px);
+      background: var(--bg-card-hover);
     }
 
     .step-number {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 800;
       background: var(--gradient-rose-gold);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
 
     .step-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.15rem;
+      margin-bottom: 0.6rem;
       color: var(--text-main);
+      font-weight: 700;
     }
 
     .step-card p {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 0.96rem;
+      line-height: 1.5;
     }
 
     .client-req-box {
@@ -932,9 +937,6 @@
       color: var(--text-main);
     }
 
-    /* ==========================================================================
-       FOOTER
-       ========================================================================== */
     footer {
       border-top: 1px solid var(--border-light);
       padding: 2.5rem 0;
@@ -952,9 +954,6 @@
       color: var(--accent-rose);
     }
 
-    /* ==========================================================================
-       RESPONSIVE DESIGN (MEDIA QUERIES)
-       ========================================================================== */
     @media (max-width: 900px) {
       .demo-interactive-grid {
         grid-template-columns: 1fr;
@@ -1013,7 +1012,7 @@
         <li><a href="#quien-soy">Quién soy</a></li>
         <li><a href="#para-quien">¿Para quién es?</a></li>
         <li><a href="#demo">Demo Interactiva</a></li>
-        <li><a href="#paso-a-paso">Paso a paso</a></li>
+        <li><a href="#paso-a-paso">Cómo trabajo</a></li>
         <li><a href="#presupuesto">Presupuesto</a></li>
         <li><a href="#faq">Preguntas Frecuentes</a></li>
       </ul>
@@ -1120,7 +1119,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 3: DEMO INTERACTIVA (WHATSAPP DE MENTIRA EN 2 COLUMNAS)
+         SECCIÓN 3: DEMO INTERACTIVA (DOS COLUMNAS WHATSAPP)
          ========================================================================== -->
     <section id="demo">
       <div class="container">
@@ -1204,7 +1203,6 @@
               </div>
             </div>
 
-            <!-- Mensajes del Chat -->
             <div class="whatsapp-body" id="interactiveChatBody">
               <div class="chat-bubble bot">
                 ¡Hola! 👋 Bienvenido/a a la Demo en vivo de tu Salón de Belleza. Tocá un botón abajo o escribí tu consulta 👇
@@ -1212,7 +1210,6 @@
               </div>
             </div>
 
-            <!-- Botones de rápida consulta -->
             <div class="chat-quick-actions">
               <button class="chat-quick-btn" data-query="¿Cuáles son los precios de manicuría y perfilado?">💰 Precios</button>
               <button class="chat-quick-btn" data-query="¿Qué turnos tienen libres para hoy?">📅 Turnos Hoy</button>
@@ -1220,7 +1217,6 @@
               <button class="chat-quick-btn" data-query="Necesito cancelar o cambiar mi turno">❌ Cancelar Turno</button>
             </div>
 
-            <!-- Input Bar -->
             <div class="chat-input-bar">
               <input type="text" id="chatUserInput" placeholder="Escribí tu consulta de ejemplo..." autocomplete="off">
               <button id="chatSendBtn" aria-label="Enviar mensaje">➤</button>
@@ -1235,7 +1231,6 @@
           <p>WhatsApp respondiendo al instante las 24hs, confirmaciones automáticas que aseguran la asistencia y tu agenda ordenada sin mover un dedo.</p>
         </div>
 
-        <!-- Botón de Cierre al final de la Demo -->
         <div style="text-align: center; margin-top: 2.5rem;">
           <a href="#cta-final" class="btn btn-whatsapp" style="font-size: 1.1rem; padding: 1.2rem 2.4rem;">
             ¿Lo ves claro? Agendá 20 minutos y te armo la versión para tu negocio
@@ -1246,31 +1241,64 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN 4: CÓMO TRABAJO, PASO A PASO & REQUISITOS DEL CLIENTE
+         SECCIÓN 4: CÓMO TRABAJO, PASO A PASO (6 PASOS CON ORDEN EXPLÍCITO)
          ========================================================================== -->
     <section id="paso-a-paso">
       <div class="container">
-        <h2 class="section-title">Listo y funcionando en tu salón en solo 7 a 10 días hábiles.</h2>
-        <p class="section-subtitle">En 7 a 10 días hábiles tenés el sistema configurado, probado y listo para funcionar en tu salón.</p>
+        <h2 class="section-title">Cómo trabajo: tu sistema listo en 6 sencillos pasos</h2>
+        <p class="section-subtitle">Un proceso claro, directo y de persona a persona. Sin complicaciones técnicas para vos.</p>
 
         <div class="steps-grid">
+          
+          <!-- Paso 1: Primero se ve la demo -->
           <div class="step-card">
             <div class="step-number">01</div>
-            <h3>Paso 1: Relevamiento Inicial (30 min)</h3>
-            <p>"En una charla inicial de 30 minutos me pasás tus servicios, horarios y profesionales; del resto de la configuración y pruebas me encargo yo."</p>
+            <h3>Paso 1: Probás la demo en vivo</h3>
+            <p>Primero navegás y probás la demo interactiva en esta misma página para ver con tus propios ojos cómo el asistente responde consultas, muestra disponibilidad y agenda turnos en tiempo real.</p>
           </div>
 
+          <!-- Paso 2: Recién en la charla 1:1 se habla de propuesta e inversión -->
           <div class="step-card">
             <div class="step-number">02</div>
-            <h3>Paso 2: Prueba y Capacitación (30 min)</h3>
-            <p>"Hacemos una prueba rápida de 30 minutos juntos, te capacito en dos pasos y el sistema queda 100% activo en tu WhatsApp actual."</p>
+            <h3>Paso 2: Reunión 1:1 de 20 minutos</h3>
+            <p>Si te sirvió lo que viste en la demo, nos reunimos 20 minutos por llamada. Analizamos tu salón puntual (servicios, profesionales y horarios) y ahí recién definimos la propuesta e inversión a tu medida.</p>
           </div>
+
+          <!-- Paso 3: Relevamiento inicial -->
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3>Paso 3: Me pasás la información (30 min)</h3>
+            <p>En una breve charla inicial me compartís tu lista de servicios, precios de catálogo y la disponibilidad por profesional. Del armado técnico y la configuración me encargo 100% yo.</p>
+          </div>
+
+          <!-- Paso 4: Armado y vinculación -->
+          <div class="step-card">
+            <div class="step-number">04</div>
+            <h3>Paso 4: Configuración en 7 a 10 días</h3>
+            <p>Diseño tu asistente personalizado y lo vinculo directamente a tu número actual de WhatsApp. Realizo todas las pruebas necesarias para asegurar que responda exactamente como vos querés.</p>
+          </div>
+
+          <!-- Paso 5: Prueba juntas y capacitación -->
+          <div class="step-card">
+            <div class="step-number">05</div>
+            <h3>Paso 5: Prueba juntas y capacitación (30 min)</h3>
+            <p>Hacemos una prueba rápida juntas para que veas la agenda funcionando en tiempo real, te enseño a usar la pantalla limpia en dos pasos sencillos y dejamos todo 100% activo.</p>
+          </div>
+
+          <!-- Paso 6: Puesta en marcha 24/7 -->
+          <div class="step-card">
+            <div class="step-number">06</div>
+            <h3>Paso 6: Tu salón en automático 24/7</h3>
+            <p>El sistema empieza a atender a tus clientas al instante. Vos te dedicás a atender tranquila en el salón mientras tu WhatsApp recibe consultas y llena tu agenda día y noche.</p>
+          </div>
+
         </div>
 
+        <!-- Qué tiene que poner el cliente -->
         <div class="client-req-box">
-          <h3>📋 Qué tiene que poner el cliente:</h3>
+          <h3>📋 Lo único que necesitás aportar:</h3>
           <ul class="client-req-list">
-            <li>Tu lista actualizada de servicios, precios y preguntas frecuentes.</li>
+            <li>Tu lista actualizada de servicios, precios de catálogo y preguntas frecuentes.</li>
             <li>Los horarios de atención y la disponibilidad por profesional o sillón.</li>
             <li>Acceso al número de WhatsApp del salón para realizar la vinculación.</li>
             <li>30 minutos para la charla inicial de relevamiento y 30 minutos al final para la prueba y capacitación rápida.</li>
@@ -1280,7 +1308,7 @@
         <div class="objection-card">
           <div class="icon">💡</div>
           <div>
-            <p>"Configurar esto me va a llevar semanas, me va a complicar la vida y me va a sacar tiempo de atención."</p>
+            <p>"Configurar esto me va a llevar semanas, me va a complicar la vida y me va a sacar tiempo de atención." -> Para nada: vos solo ponés 30 minutos al inicio y 30 al final; del resto del trabajo pesado me encargo yo.</p>
           </div>
         </div>
       </div>
@@ -1443,11 +1471,10 @@
   </footer>
 
   <!-- ==========================================================================
-       JAVASCRIPT EMBEBIDO (INTERACTIVIDAD Y DEMO CHAT)
+       JAVASCRIPT EMBEBIDO
        ========================================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // 1. Menú Móvil Desplegable
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
 
@@ -1457,7 +1484,6 @@
         });
       }
 
-      // 2. Acordeón interactivo para Preguntas Frecuentes (FAQ)
       const faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(item => {
         const questionBtn = item.querySelector('.faq-question');
@@ -1468,7 +1494,6 @@
         });
       });
 
-      // 3. Manejador para el botón CTA final
       const btnCtaFinal = document.getElementById('btnCtaFinal');
       if (btnCtaFinal) {
         btnCtaFinal.addEventListener('click', function(e) {
@@ -1479,7 +1504,6 @@
         });
       }
 
-      // 4. LÓGICA DEL CHAT DE DEMO INTERACTIVA
       const chatContainer = document.getElementById('interactiveChatBody');
       const chatInput = document.getElementById('chatUserInput');
       const sendBtn = document.getElementById('chatSendBtn');
